@@ -1,0 +1,21 @@
+<div class="panel panel-primary">
+
+    <div class="panel-heading"> {{pageTitle}} </div>
+
+    <div class="panel-body">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                <span> <button [disabled]="!isValid()" (click)="saveUnit()" class="btn btn-primary" type="button" style="width:80px;margin-right:10px" > Save </button> </span>
+                <span> <a [routerLink]="['/units']" class="btn btn-default" > Cancel </a> </span>
+                <span> <a (click)="deleteUnit()" class="btn btn-default" > Delete </a> </span>       
+            </div>
+        </div>
+    </div>
+
+    <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+</div>

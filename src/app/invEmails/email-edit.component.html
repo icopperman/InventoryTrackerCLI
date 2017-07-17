@@ -1,0 +1,26 @@
+start edit component
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+
+    <div class="panel-body">
+start router outlet >
+       <router-outlet></router-outlet>
+< end router outlet
+    </div>
+
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                <span> <button [disabled]="!isValid()" (click)="saveEmail()" class="btn btn-primary" type="button" style="width:80px;margin-right:10px"> Save </button> </span>
+                <span> <a [routerLink]="['/emails']" class="btn btn-default" > Cancel </a> </span>
+                <span> <a (click)="deleteEmail()" class="btn btn-default" > Delete </a> </span>       
+            </div>
+        </div>
+    </div>
+
+    <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+</div>
+end edit component

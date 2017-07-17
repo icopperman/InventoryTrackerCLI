@@ -1,0 +1,73 @@
+<div class="panel panel-primary" *ngIf="unit">
+    <div class="panel-heading" style="font-size:large">
+        {{pageTitle + ": " + unit.unitName}}
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">Name:</div>
+                    <div class="col-md-6">{{unit.unitName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Campus</div>
+                    <div class="col-md-6">{{unit.campus}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Type</div>
+                    <div class="col-md-6">{{unit.unitType}}</div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-md-3">Availability:</div>
+                    <div class="col-md-6">{{unit.releaseDate}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Price:</div>
+                    <div class="col-md-6">{{unit.price|currency:"USD":true}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">5 Star Rating:</div>
+                    <div class="col-md-6">
+                        <ai-star [rating]="unit.starRating">
+                        </ai-star>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Category:</div>
+                    <div class="col-md-6">{{unit.category}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Tags:</div>
+                    <div class="col-md-6">{{unit.tags}}</div>
+                </div>
+            </div>-->
+<!--
+            <div class="col-md-6" *ngIf="unit.imageUrl">
+                <img class="center-block img-responsive" 
+                     [style.width.px]="200" 
+                     [style.margin.px]="2" 
+                     [src]="unit.imageUrl"
+                     [title]="unit.unitName">
+            </div>-->
+        </div>
+        <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+    </div>
+
+    <div class="panel-footer">
+        <!--<a class="btn btn-default"
+           [routerLink]="['unit.units']"
+           [preserveQueryParams]="true">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>-->
+        <a class="btn btn-default"
+           [routerLink]="['/units']"
+           queryParamsHandling="preserve">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>
+        <a class="btn btn-primary" style="width:80px;margin-left:10px" 
+           [routerLink]="['edit']">
+            Edit
+        </a>
+    </div>
+</div>

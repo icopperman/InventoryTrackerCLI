@@ -1,0 +1,120 @@
+<div class="panel-body">
+    <form class="form-horizontal"
+          novalidate
+          #tabletForm="ngForm">
+        <fieldset>
+            <legend>Basic tablet Information</legend>
+            <div class="form-group" 
+                    [ngClass]="{'has-error': (tabletNameVar.touched || 
+                                              tabletNameVar.dirty || tablet.tblIdx !== 0) && 
+                                              !tabletNameVar.valid }">
+                <label class="col-md-2 control-label" 
+                        for="tabletNameId">Tablet Name</label>
+
+                <div class="col-md-8">
+                    <input class="form-control" 
+                            id="tabletNameId" 
+                            type="text" 
+                            placeholder="Name (required)"
+                            required
+                            minlength="3"
+                            [(ngModel)] = tablet.TabletName
+                            name="tabletName"
+                            #tabletNameVar="ngModel" />
+                    <span class="help-block" *ngIf="(tabletNameVar.touched ||
+                                                     tabletNameVar.dirty || tablet.tblIdx !== 0) &&
+                                                     tabletNameVar.errors">
+                        <span *ngIf="tabletNameVar.errors.required">
+                            tablet name is required.
+                        </span>
+                        <span *ngIf="tabletNameVar.errors.minlength">
+                            Tablet name must be at least three characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group" 
+                    [ngClass]="{'has-error': (tabletCodeVar.touched || 
+                                              tabletCodeVar.dirty || tablet.tblIdx !== 0) && 
+                                              !tabletCodeVar.valid }">
+                <label class="col-md-2 control-label" for="tabletCampus">Campus</label>
+
+                <div class="col-md-8">
+                    <select class="form-control" 
+                            id="tabletCampus" 
+                            name="tabletCampus"
+                           
+                            placeholder="Campus (required)"
+                            required
+                            [(ngModel)] = tablet.Campus
+                            (ngModelChange)="campusChanged($event)"
+                            #tabletCodeVar="ngModel" >
+                    <option *ngFor="let c of ccs" [value]="c" >{{c}}</option>
+                    </select>
+  
+                    <span class="help-block" *ngIf="(tabletCodeVar.touched ||
+                                                     tabletCodeVar.dirty || tablet.tblIdx !== 0) &&
+                                                     tabletCodeVar.errors">
+                        <span *ngIf="tabletCodeVar.errors.required">
+                            Campus is required.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="unitsSelector">Unit</label>
+
+                <div class="col-md-8">
+                      <select class="form-control"
+                            id="unitsSelector"
+                            name="unitsSelector"
+                            placeholder="Select a Unit"
+                            required
+                            [(ngModel)]="tablet.Unit" 
+                            (ngModelChange)="unitChanged($event)"
+                            #tabletUnitsVar
+                        >
+                        <option *ngFor="let unit of units" [value]="unit.unitName" >{{unit.unitName}}</option>
+                    </select>
+                                  <span class="help-block" *ngIf="(tabletUnitsVar.touched ||
+                                                     tabletUnitsVar.dirty || tablet.tblIdx !== 0) &&
+                                                     tabletUnitsVar.errors">
+
+                        <span *ngIf="tabletUnitsVar.errors.required">
+                            Unit is required.
+                        </span>
+                    </span>
+                </div>
+            </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="tabletStatus">Status</label>
+
+                <div class="col-md-8">
+                      <select class="form-control"
+                            id="tabletStatus"
+                            name="tabletStatus"
+                            placeholder="Select a Unit"
+                            required
+                            [(ngModel)]="tablet.Status" 
+                            (ngModelChange)="statusChanged($event)"
+                            #tabletStatVar
+                        >
+                        <option *ngFor="let stat of statuses" [value]="stat" >{{stat}}</option>
+                    </select>
+                                  <span class="help-block" *ngIf="(tabletStatVar.touched ||
+                                                     tabletStatVar.dirty || tablet.tblIdx !== 0) &&
+                                                  tabletStatVar.errors">
+
+                        <span *ngIf="tabletStatVar.errors.required">
+                            Status is required.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+        </fieldset>
+    </form>
+</div>

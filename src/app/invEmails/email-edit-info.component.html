@@ -1,0 +1,66 @@
+start edit info component >
+<div class="panel-body">
+    
+    <form class="form-horizontal" novalidate [formGroup]="emailFormGroup">
+   
+        <fieldset>
+    
+            <legend>Basic email Information</legend>
+            
+            <div class="form-group"  [ngClass]="{ 'has-error': emailMessage }">
+                <label class="col-md-2 control-label " for="emailName ">Email Address</label>
+                <div class="col-md-8 ">
+                    <input class="form-control" id="emailName" formControlName="emailName" type="email" placeholder="Email (required) " />
+                    <span class="help-block" *ngIf="emailMessage">{{emailMessage}}</span>
+                </div>
+            </div>
+            
+            <div class="form-group" [ngClass]="{ 'has-error': campusMessage } ">
+                <label class="col-md-2 control-label" for="emailCampus">Campus</label>
+                <div class="col-md-8">
+                    <select class="form-control " id="emailCampus" placeholder="Campus (required) " formControlName="emailCampus">
+                            <option *ngFor="let c of ccs " [value]="c" >{{c}}</option>
+                    </select>
+                    <span class="help-block" *ngIf="campusMessage">{{campusMessage}}</span>
+                </div>
+            </div>
+
+            <div class="form-group " [ngClass]="{ 'has-error': unitsMessage } " >
+                <label class="col-md-2 control-label " for="unitsSelector">Units</label>
+                <div class="col-md-8 ">
+                    <select class="form-control" id="unitsSelector" formControlName="unitsSelector" placeholder="Select a Unit " >
+                        <option *ngFor="let unit of units" [value]="unit.unitName" >{{unit.unitName}}</option>
+                    </select>
+                    <span class="help-block " *ngIf="unitsMessage">{{unitsMessage}}</span>
+                </div>
+            </div>
+    
+            <div class="has-error " *ngIf="errorMessage ">{{errorMessage}}</div>
+    
+        </fieldset>
+    </form>
+</div>
+< end edit info component
+            <!--(emailFormGroup.get('emailName').touched || emailFormGroup.get('emailName').dirty || emailClass.tblIdx !== 0 ) && !emailFormGroup.get('emailName').valid -->
+                    <!--(emailFormGroup.get('emailName').touched || emailFormGroup.get('emailName').dirty ||  emailClass.tblIdx !== 0 ) && emailFormGroup.get('emailName').errors -->
+                        <!--<span *ngIf="emailFormGroup.get('emailName').errors.required">Email address is required.</span>
+                        <span *ngIf="emailFormGroup.get('emailName').errors.minlength">Email address must be at least three characters.</span>
+                    -->
+            <!--(emailFormGroup.get('emailCampus').touched || emailFormGroup.get('emailCampus').dirty || emailClass.tblIdx !== 0 ) && !emailFormGroup.get('emailCampus').valid -->
+                    <!--(emailFormGroup.get('emailCampus').touched || emailFormGroup.get('emailCampus').dirty || emailClass.tblIdx !== 0 ) && emailFormGroup.get('emailCampus').errors -->
+                        <!--<span *ngIf="emailFormGroup.get('emailCampus').errors.required ">Campus is required.</span>-->
+                    <!--(emailFormGroup.get('unitsSelector').touched || emailFormGroup.get('unitsSelector').dirty || email.tblIdx !== 0 ) && emailFormGroup.get('unitsSelector').errors-->
+                        <!--<span *ngIf="emailFormGroup.get('unitsSelector').errors.required ">Unit is required.</span>-->
+
+
+
+
+
+    <!--<input class="form-control " 
+                            id="emailUnit " 
+                            name="emailUnit "
+                            placeholder="Unit (required) "
+                            required
+                            [(ngModel)] = email.Unit
+                            #emailUnitVar="ngModel " />
+                            -->
